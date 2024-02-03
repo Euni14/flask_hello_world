@@ -67,6 +67,31 @@ def Searchfile(name):
     
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
+
+@app.route('/enregistrer_client', methods=['GET'])
+def formulaire_client():
+    return render_template('formulaire.html')  # afficher le formulaire
+
+
+# Route pour enregistrer un nouveau client
+
+@app.route('/enregistrer_client', methods=['POST'])
+def enregistrer_client():
+    nom = request.form['nom']
+    prenom = request.form['prenom']
+    adresse = request.form['adresse']
+
+    # Connexion à la base de données
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    # Exécution de la requête SQL pour insérer un nouveau client
+    cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, adresse))
+    conn.commit()
+    conn.close()
+
+    return redirect(url_for('consulation'))  # Rediriger vers la page d'accueil après l'enregistrement
+
                                                                                                                                        
 if __name__ == "__main__":
   app.run(debug=True)
