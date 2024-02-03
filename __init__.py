@@ -86,7 +86,7 @@ def enregistrer_client():
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-  cursor.execute('DELETE FROM clients WHERE nom=? OR nom=? OR nom=? OR nom=?, "Gros","df","cd","ret")
+  cursor.execute('DELETE FROM clients WHERE nom=? OR nom=? OR nom=? OR nom=?', "Gros","df","cd","ret")
     #cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, adresse))
     conn.commit()
     conn.close()
