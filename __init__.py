@@ -77,20 +77,7 @@ def formulaire_client():
 
 @app.route('/enregistrer_client', methods=['POST'])
 def enregistrer_client():
-    nom = request.form['nom']
-    prenom = request.form['prenom']
-    adresse = request.form['adresse']
-
-    # Connexion à la base de données
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-
-    # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, adresse))
-    conn.commit()
-    conn.close()
-
-    #return redirect(url_for('/consulation/'))  # Rediriger vers la page d'accueil après l'enregistrement
+    return render_template('formulaire.html')
 
                                                                                                                                        
 if __name__ == "__main__":
