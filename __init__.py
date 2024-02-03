@@ -61,7 +61,7 @@ def Readfiche(name):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     param = "%" + name + "%"
-    cursor.execute('SELECT * FROM clients WHERE name LIKE ? ', (param,))
+    cursor.execute('SELECT * FROM clients WHERE nom LIKE ? ', (param,))
     data = cursor.fetchall()
     conn.close()
     
