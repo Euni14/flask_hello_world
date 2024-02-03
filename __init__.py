@@ -90,7 +90,7 @@ def enregistrer_client():
     conn.commit()
     conn.close()
 
-    return redirect(url_for('consulation'))  # Rediriger vers la page d'accueil après l'enregistrement
+    return redirect(url_for('/consulation/'))  # Rediriger vers la page d'accueil après l'enregistrement
 
                                                                                                                                        
 if __name__ == "__main__":
